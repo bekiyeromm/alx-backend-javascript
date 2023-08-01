@@ -2,7 +2,7 @@ export default function cleanSet(set, startString) {
   const newString = [];
   if (startString === '' || typeof startString !== 'string') return '';
   set.forEach((s) => {
-    if (s.startsWith(startString)) {
+    if (typeof s === 'string' && s.startsWith(startString)) {
       newString.push(s.slice(startString.length));
     }
   });
