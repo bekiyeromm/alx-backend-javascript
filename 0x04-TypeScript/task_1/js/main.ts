@@ -1,5 +1,3 @@
-// main.ts
-
 class Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -16,7 +14,14 @@ class Teacher {
   }
 }
 
-const teacher3: Teacher = new Teacher('John', 'Doe', false, 'London');
-teacher3.contract = false;
+class Directors extends Teacher {
+  readonly numberOfReports: number;
 
-console.log(teacher3);
+  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, numberOfReports: number) {
+    super(firstName, lastName, fullTimeEmployee, location);
+    this.numberOfReports = numberOfReports;
+  }
+}
+
+const director1: Directors = new Directors('John', 'Doe', true, 'London', 17);
+console.log(director1);
