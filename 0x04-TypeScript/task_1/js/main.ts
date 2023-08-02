@@ -1,41 +1,32 @@
-class Teacher {
+interface StudentInterface {
+  new (firstName: string, lastName: string): StudentClass;
+}
+
+class StudentClass implements StudentInterface {
   readonly firstName: string;
   readonly lastName: string;
-  readonly fullTimeEmployee: boolean;
-  readonly yearsOfExperience?: number;
-  readonly location: string;
-  [attribute: string]: any;
 
-  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string) {
+  constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.fullTimeEmployee = fullTimeEmployee;
-    this.location = location;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
   }
 }
 
-class Directors extends Teacher {
-  readonly numberOfReports: number;
+const student1: StudentClass = new StudentClass('John', 'Doe');
+console.log(student1.workOnHomework()); // Output: Currently working
+console.log(student1.displayName());    // Output: John
 
-  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, numberOfReports: number) {
-    super(firstName, lastName, fullTimeEmployee, location);
-    this.numberOfReports = numberOfReports;
-  }
-}
-
-const director1: Directors = new Directors('John', 'Doe', true, 'London', 17);
-console.log(director1);
-
-function printTeacher(firstName: string, lastName: string): string {
-  const firstLetter = firstName.charAt(0).toUpperCase();
-  const fullName = `${firstLetter}. ${lastName}`;
-  return fullName;
-}
-
-// Example usage:
-const result = printTeacher("John", "Doe");
-console.log(result); // Output: J. Doe
-
-interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+interface StudentInterface {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string;
+  displayName(): string;
 }
