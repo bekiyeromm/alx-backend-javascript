@@ -25,3 +25,17 @@ class Directors extends Teacher {
 
 const director1: Directors = new Directors('John', 'Doe', true, 'London', 17);
 console.log(director1);
+
+function printTeacher(firstName: string, lastName: string): string {
+  const firstLetter = firstName.charAt(0).toUpperCase();
+  const fullName = `${firstLetter}. ${lastName}`;
+  return fullName;
+}
+
+// Example usage:
+const result = printTeacher("John", "Doe");
+console.log(result); // Output: J. Doe
+
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
