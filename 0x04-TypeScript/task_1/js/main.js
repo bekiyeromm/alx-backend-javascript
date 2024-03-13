@@ -46,7 +46,14 @@ var Teacher = /** @class */ (function () {
     });
     return Teacher;
 }());
+function printTeacher(firstName, lastName) {
+    var firstInitial = firstName.charAt(0);
+    return firstInitial + ". " + lastName;
+}
 // Example usage
-var student = new Teacher("bereket", "tena", true, "seatle", 5);
-student.contract = true; // Adding a dynamic property
-console.log(student);
+var teacher = new Teacher("bereket", "tena", true, "seatle", 5);
+teacher.contract = true; // Adding a dynamic property
+console.log(teacher);
+//task 2 example usage 
+var teacherName = printTeacher;
+console.log(teacherName("bereket", "tena"));

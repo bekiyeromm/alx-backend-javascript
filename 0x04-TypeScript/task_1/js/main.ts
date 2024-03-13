@@ -37,10 +37,21 @@ class Teacher {
         return this._location;
     }
 }
+// code for task 2
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
 
+function printTeacher(firstName: string, lastName: string): string {
+    const firstInitial = firstName.charAt(0);
+    return `${firstInitial}. ${lastName}`;
+}
 // Example usage
 
 const teacher = new Teacher("bereket", "tena", true, "seatle", 5);
 
 teacher.contract = true; // Adding a dynamic property
 console.log(teacher)
+//task 2 example usage 
+const teacherName: printTeacherFunction = printTeacher;
+console.log(teacherName("bereket", "tena"));
