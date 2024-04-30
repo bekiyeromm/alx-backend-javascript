@@ -22,7 +22,7 @@ app.get('/students', (req, res) => {
     } else {
       const courses = new Map();
       let students = data.split('\n');
-      students = students.slice(1, students.length);
+      students = students.slice(1, students.length - 1);
 
       // Parse CSV data creating a map of courseData objects.
       students.forEach((student) => {
