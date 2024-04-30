@@ -26,7 +26,7 @@ function countStudents(path) {
     });
 
     // Display information from map
-    console.log(`Number of students: ${students.length}`);
+    console.log(`Number of students: ${students.length - 1}`);
     courses.forEach((courseData, course) => {
       console.log(`Number of students in ${course}: ${courseData.count}. List: ${courseData.students.join(', ')}`);
     });
