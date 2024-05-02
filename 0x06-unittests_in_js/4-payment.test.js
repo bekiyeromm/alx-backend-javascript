@@ -4,16 +4,20 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 const Utils = require('./utils');
-const sendPaymentRequestToAPi = require('./3-payment');
+const sendPaymentRequestToAPi = require('./4-payment');
 
-describe('sendPaymentRequestToApi', function() {
-  describe('#Utils.calculateNumber()', function() {
-    it('should call Utils.calculateNumber with correct arguments and log the result', function() {
-      const spy = sinon.spy(Utils, 'calculateNumber');
-      sendPaymentRequestToAPi(100, 20);
-      expect(spy.calledOnce).to.equal(true);
-      expect(spy.calledWith('SUM', 100, 20)).to.equal(true);
-      spy.restore();
-    });
+describe('sendPaymentRequestToApi', () => {
+  it('sendPaymentRequestToApi calls console.log with the right arguments', () => {
+    const disp = sinon.spy(console);
+    const testresult = sinon.stub(Utils, 'calculateNumber');
+
+    testresult.returns(10);
+    sendPaymentRequestToAPi(100, 20);
+    expect(testresult.calledWith('SUM', 100, 20)).to.be.true;
+    expect(testresult.callCount).to.be.equal(1);
+    expect(disp.log.calledWith('The total is: 10')).to.be.true;
+    expect(disp.log.callCount).to.be.equal(1);
+    testresult.restore();
+    disp.log.restore();
   });
 });
