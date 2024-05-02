@@ -2,19 +2,18 @@
  * itegration test suit for api.js
  */
 
-const request = require('supertest');
-const { expect } = require('chai'); // Import expect from Chai
-const server = require('./api');
+const request = require('request');
+const { expect } = require('chai');
 
-describe('Index page', () => {
-  it('should return status code 200', async () => {
-    const response = await request(server).get('/');
-    expect(response.status).to.equal(200);
-  });
+describe('API integration test', () => {
+  const API_URL = 'http://localhost:7865';
 
-  it('should return the message "Welcome to the payment system"', async () => {
-    const response = await request(server).get('/');
-    expect(response.text).to.equal('Welcome to the payment system'); // Use expect for assertions
+  it('GET / returns correct response', (done) => {
+    request.get(`${API_URL}/`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
+    });
   });
 });
 
