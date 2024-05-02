@@ -15,6 +15,7 @@ describe('API integration test', () => {
       done();
     });
   });
+
   it('GET /cart/:id returns correct response for valid :id', (done) => {
     request.get(`${API_URL}/cart/47`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
